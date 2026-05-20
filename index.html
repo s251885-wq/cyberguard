@@ -6,64 +6,45 @@
     <title>CyberGuard: Protecting Your Digital Future</title>
     
     <style>
-        /* =========================================
-           CSS VARIABLES & RESET (The Foundation)
-           ========================================= */
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
         :root {
-            --d: #0a0e17; 
-            --b: #0d1b2a; 
-            --a: #1b3a5f; 
-            --c: #00d4ff; 
-            --n: #00a8cc; 
-            --l: #4a90a4; 
-            --t: #e0f4ff; 
-            --m: #8ba3b5; 
+            --d: #0c3d5d; --b: #115e89; --a: #1e6680;
+            --c: #00d4ff; --n: #00a8cc; --l: #4a90a4;
+            --t: #ffffff; --m: #e2e8f0;
         }
-
-        /* =========================================
-           BODY & BACKGROUND (The Canvas)
-           ========================================= */
-        
+ 
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--d) 0%, var(--b) 50%, #0d1520 100%);
+            background: #0a2a41;
             color: var(--t);
             min-height: 100vh;
+            margin: 0;
         }
-
+ 
         body::before {
             content: '';
             position: fixed;
             inset: 0;
-            background: radial-gradient(ellipse at 20% 20%, rgba(0,212,255,.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 80%, rgba(0,168,204,.06) 0%, transparent 50%),
-                        radial-gradient(ellipse at 50% 50%, rgba(27,58,95,.15) 0%, transparent 70%);
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.25) 0%, rgba(0,212,255,0.2) 20%, transparent 40%),
+                radial-gradient(ellipse at 20% 20%, rgba(0,212,255,0.15) 0%, transparent 35%),
+                radial-gradient(ellipse at 80% 80%, rgba(0,168,204,0.15) 0%, transparent 35%);
             pointer-events: none;
             z-index: -1;
         }
-
-        /* =========================================
-           HEADER & NAVIGATION (The Menu)
-           ========================================= */
-        
+ 
         header {
-            background: rgba(10,14,23,.95);
-            border-bottom: 1px solid rgba(0,212,255,.2);
+            background: #0d2e45;
+            border-bottom: 1px solid rgba(0,212,255,0.15);
             padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
         }
-
+ 
         nav {
             max-width: 1200px;
             margin: 0 auto;
@@ -71,35 +52,27 @@
             justify-content: space-between;
             align-items: center;
         }
-
+ 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--c);
-            text-shadow: 0 0 20px rgba(0,212,255,.5);
+            text-shadow: 0 0 20px rgba(0,212,255,.4);
             display: flex;
             align-items: center;
             gap: .5rem;
         }
-
+ 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: linear-gradient(135deg, var(--c), var(--n));
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem;
         }
-
-        .nav-links {
-            display: flex;
-            gap: .5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+ 
+        .nav-links { display: flex; gap: .5rem; justify-content: center; }
+ 
         .nav-btn {
             background: 0 0;
             border: 1px solid transparent;
@@ -110,48 +83,34 @@
             transition: all .3s ease;
             font-size: .9rem;
         }
-
         .nav-btn:hover, .nav-btn.active {
             color: var(--c);
             border-color: var(--c);
             background: rgba(0,212,255,.1);
         }
-
-        /* =========================================
-           MAIN CONTENT & PAGES (The Layout)
-           ========================================= */
-
+ 
         main {
             padding-top: 80px;
-            min-height: 100vh;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
         }
-
+ 
         .page {
-            display: none; 
+            display: none;
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
             animation: fadeIn .5s ease;
         }
-
-        .page.active {
-            display: block;
-        }
-
+        .page.active { display: block; }
+ 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* =========================================
-           HOME PAGE HERO SECTION
-           ========================================= */
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
+ 
+        .hero { text-align: center; padding: 4rem 2rem; }
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
@@ -160,234 +119,383 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--m);
-            max-width: 800px;
-            margin: 0 auto 2rem;
+        .hero p { font-size: 1.2rem; color: var(--m); max-width: 800px; margin: 0 auto 2rem; }
+        .hero-icon { font-size: 5rem; margin-bottom: 1rem; }
+ 
+        .video-wrapper {
+            max-width: 560px;
+            margin: 2rem auto 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(0,212,255,0.3);
+            box-shadow: 0 0 40px rgba(0,212,255,0.2);
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease;
         }
-
-        .hero-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
+        .video-wrapper a { display: block; position: relative; }
+        .video-wrapper img { width: 100%; height: 315px; object-fit: cover; display: block; transition: opacity 0.3s ease; }
+        .video-wrapper:hover img { opacity: 0.75; }
+        .play-btn {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,0,0,0.85);
+            color: white; font-size: 1.8rem;
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            padding-left: 5px;
         }
-
-        /* =========================================
-           CARDS & GRIDS (Original Styles)
-           ========================================= */
-
+        .video-wrapper:hover .play-btn { transform: translate(-50%,-50%) scale(1.1); background: rgba(255,0,0,1); }
+ 
         .section-title {
-            font-size: 2rem;
-            color: var(--c);
-            margin-bottom: 1.5rem;
-            padding-bottom: .5rem;
+            font-size: 2rem; color: var(--c);
+            margin-bottom: 1.5rem; padding-bottom: .5rem;
             border-bottom: 2px solid var(--a);
         }
-
-        .grid-2, .grid-3 {
-            display: grid;
-            gap: 1.5rem;
-        }
+ 
+        .grid-2, .grid-3 { display: grid; gap: 1.5rem; }
         .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+ 
         .content-card, .threat-card, .solution-card, .effect-card {
-            background: rgba(13,27,42,.8);
-            border: 1px solid var(--a);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            transition: all .3s ease;
+            background: rgba(16,37,53,0.85);
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(5px);
         }
-
-        .content-card:hover {
-            border-color: var(--c);
-            box-shadow: 0 0 30px rgba(0,212,255,.1);
-            transform: translateY(-2px);
-        }
-        .threat-card:hover {
-            border-color: #ff6b6b;
-            box-shadow: 0 0 30px rgba(255,107,107,.2);
-        }
-        .solution-card:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 30px rgba(74,222,128,.2);
-        }
-        .effect-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0,212,255,.15);
-        }
-
+        .content-card:hover { background: rgba(22,50,70,0.95); border-color: var(--c); box-shadow: 0 0 20px rgba(0,212,255,0.2); transform: translateY(-5px); }
+        #page3 .content-card:hover { background: rgba(45,35,15,0.95); border-color: #ffcc00; box-shadow: 0 0 25px rgba(255,204,0,0.4); transform: translateY(-5px); }
+        .threat-card:hover { background: rgba(45,20,25,0.95); border-color: #ff6b6b; box-shadow: 0 0 20px rgba(255,107,107,0.25); transform: translateY(-5px); }
+        .solution-card:hover { background: rgba(20,45,30,0.95); border-color: #4ade80; box-shadow: 0 0 20px rgba(74,222,128,0.25); transform: translateY(-5px); }
+        .effect-card:hover { background: rgba(35,20,50,0.95); border-color: #a855f7; box-shadow: 0 0 35px rgba(168,85,247,0.4); transform: translateY(-10px); }
+ 
         .content-card h3, .effect-card h3 { color: var(--c); margin-bottom: 1rem; font-size: 1.3rem; }
         .threat-card h3 { color: #ff6b6b; margin-bottom: .5rem; }
         .solution-card h3 { color: #4ade80; margin-bottom: .5rem; }
         .content-card p { color: var(--m); line-height: 1.8; }
         .threat-icon, .solution-icon { font-size: 2.5rem; margin-bottom: 1rem; }
         .effect-icon { font-size: 2rem; margin-bottom: .5rem; }
-
-        /* =========================================
-           CONTACT FORM
-           ========================================= */
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        /* Comment: Added style for labels as requested */
-        .form-group label {
-            display: block;
-            text-align: left;
-            color: var(--c);
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(13,27,42,.8);
-            border: 1px solid var(--a);
-            border-radius: 8px;
-            color: var(--t);
-            font-size: 1rem;
-            transition: all .3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--c);
-            box-shadow: 0 0 20px rgba(0,212,255,.2);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--c), var(--n));
-            color: var(--d);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all .3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,212,255,.3);
-        }
-
-        /* Comment: Added style for form-title */
-        .form-title {
-            color: var(--c);
-            text-align: center;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--a);
-            display: inline-block;
-            padding-bottom: 5px;
-            width: 100%;
-        }
-
-        /* =========================================
-           FOOTER
-           ========================================= */
-
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 2rem; 
-            background: rgba(10,14,23,.95);
-            border-top: 1px solid var(--a);
-            text-align: center;
-            font-size: 1rem;
-            color: var(--m);
-            left: 0;
-        }
-
-        @media(max-width: 768px) {
+        #page3 .content-card h3 { color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.3); }
+        .effect-card h3 { color: #a855f7; text-shadow: 0 0 10px rgba(168,85,247,0.3); }
+ 
+        .contact-form { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; text-align: left; color: var(--c); font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; background: rgba(10,42,65,0.8); border: 1px solid var(--a); border-radius: 8px; color: var(--t); font-size: 1rem; transition: all .3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--c); box-shadow: 0 0 20px rgba(0,212,255,.2); }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+ 
+        .submit-btn { background: linear-gradient(135deg, var(--c), var(--n)); color: #0a2a41; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all .3s ease; width: 100%; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,.3); }
+ 
+        .form-title { color: var(--c); text-align: center; margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.3rem; text-transform: uppercase; border-bottom: 1px solid var(--a); display: inline-block; padding-bottom: 5px; width: 100%; }
+ 
+        footer { background: #0d2e45; border-top: 1px solid rgba(0,212,255,0.15); padding: 2rem; text-align: center; font-size: 0.95rem; color: var(--m); margin-top: auto; width: 100%; }
+ 
+        @media(max-width:768px) {
             .hero h1 { font-size: 2rem; }
             .nav-links { gap: .3rem; }
             .nav-btn { padding: .4rem .6rem; font-size: .8rem; }
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
         }
-
-        /* =========================================
-           HYPERLINKS (Email & Phone & External)
-           ========================================= */
-
-        .email-link, .phone-link, .google-link {
+ 
+        .email-link, .phone-link, .google-link { font-weight: bold; padding: 4px 10px; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; display: inline-block; margin: 2px; }
+        .email-link { color: #ffffff !important; background-color: #00a8cc; }
+        .phone-link { color: #ffffff !important; background-color: #7c4dff; }
+        .google-link { color: #ffffff !important; background-color: #007bff; }
+        .email-link:hover, .phone-link:hover, .google-link:hover { background-color: #f0f4f8 !important; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .email-link:hover { color: #00a8cc !important; }
+        .phone-link:hover { color: #7c4dff !important; }
+        .google-link:hover { color: #007bff !important; }
+ 
+        /* ===== HACKER RAIN OVERLAY ===== */
+        #hackerOverlay {
+            display: none; position: fixed; inset: 0; z-index: 9990;
+            background: radial-gradient(circle at center, rgba(150,0,0,0.18), #000 70%);
+            pointer-events: all; opacity: 0; transition: opacity 0.6s ease;
+        }
+        #hackerOverlay.show { display: block; }
+        #hackerOverlay.show.visible { opacity: 1; }
+        #hackerCanvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; }
+        #hackerCanvas.visible { opacity: 1; }
+        #hackerImage {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%) scale(0);
+            width: 280px; height: 280px; object-fit: contain;
+            filter: drop-shadow(0 0 50px #ff0000) drop-shadow(0 0 100px #cc0000) saturate(1.3);
+            opacity: 0; z-index: 2;
+        }
+        #hackerImage.spawn { animation: hackerSpawn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+        #hackerImage.fadeout { animation: hackerFade 0.8s ease-in forwards; }
+        @keyframes hackerSpawn {
+            0% { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+            60% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+            100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+        }
+        @keyframes hackerFade {
+            0% { opacity: 1; transform: translate(-50%,-50%) scale(1); filter: drop-shadow(0 0 40px #ff0000) drop-shadow(0 0 80px #cc0000); }
+            100% { opacity: 0; transform: translate(-50%,-50%) scale(1.4); filter: drop-shadow(0 0 120px #ff0000) brightness(4); }
+        }
+ 
+        /* ===== UPGRADED SECRET CODE INPUT HACK ANIMATION ===== */
+        /* The wrapper that holds displaced glitch chars */
+        .hack-glitch-wrapper {
+            position: relative;
+            display: block;
+        }
+ 
+        /* Floating bug characters that burst out */
+        .bug-char {
+            position: fixed;
+            font-family: 'Courier New', monospace;
             font-weight: bold;
-            padding: 4px 10px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin: 2px;
+            font-size: 1rem;
+            pointer-events: none;
+            z-index: 9989;
+            animation: bugCharFly 0.7s ease-out forwards;
         }
-
-        /* EMAIL button color */
-        .email-link {
-            color: #ffffff !important;
-            background-color: #00d4ff; 
+        @keyframes bugCharFly {
+            0%   { opacity: 1; transform: translate(0,0) scale(1); }
+            60%  { opacity: 0.8; }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); }
         }
-
-        /* PHONE button color */
-        .phone-link {
-            color: #ffffff !important;
-            background-color: #9d4edd; 
+ 
+        /* Input: border glows red while JS removes chars one by one */
+        @keyframes inputHackBorder {
+            0%   { border-color: rgba(0,212,255,0.4); box-shadow: none; }
+            20%  { border-color: #ff3333; box-shadow: 0 0 18px rgba(255,0,0,0.5), inset 0 0 8px rgba(255,0,0,0.15); }
+            50%  { border-color: #ffffff; box-shadow: 0 0 28px rgba(255,255,255,0.5), inset 0 0 12px rgba(255,0,0,0.2); }
+            80%  { border-color: #cc0000; box-shadow: 0 0 20px rgba(200,0,0,0.6); }
+            100% { border-color: #660000; box-shadow: 0 0 8px rgba(100,0,0,0.3); }
         }
-
-        /* GOOGLE button color */
-        .google-link {
-            color: #ffffff !important;
-            background-color: #007bff; 
+        input[name="name"].hacking {
+            animation: inputHackBorder 1.4s ease-in forwards;
+            pointer-events: none;
+            color: transparent; /* JS replaces with span chars */
         }
-
-        /* HOVER: Fixes the white-on-white text visibility */
-        .email-link:hover {
-            background-color: #f0f0f0 !important;
-            color: #008ba3 !important; 
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+ 
+        /* ===== TOAST ===== */
+        .egg-unlock {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(200,0,0,0.15), rgba(140,0,0,0.15));
+            border: 2px solid rgba(255,50,50,0.6); color: #ff4444;
+            padding: 1.2rem 2rem; border-radius: 40px;
+            font-size: 1.1rem; font-weight: 600; letter-spacing: 1px;
+            pointer-events: none; opacity: 0; z-index: 9998;
+            backdrop-filter: blur(10px); text-shadow: 0 0 10px rgba(255,50,50,0.6);
         }
-
-        .phone-link:hover {
-            background-color: #f0f0f0 !important;
-            color: #5a189a !important; 
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .egg-unlock.show { animation: unlockPulse 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards, unlockGlow 1.5s ease-in-out forwards; }
+        @keyframes unlockPulse {
+            0% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.8); }
+            50% { box-shadow: 0 0 40px rgba(255,50,50,0.8), 0 0 80px rgba(255,50,50,0.4); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); box-shadow: 0 0 30px rgba(255,50,50,0.6); }
         }
-
-        .google-link:hover {
-            background-color: #f0f0f0 !important;
-            color: #007bff !important;
-            transform: translateY(-2px);
+        @keyframes unlockGlow {
+            0% { text-shadow: 0 0 5px rgba(255,50,50,0.5); }
+            50% { text-shadow: 0 0 15px rgba(255,50,50,0.9), 0 0 30px rgba(255,50,50,0.5); }
+            100% { text-shadow: 0 0 5px rgba(255,50,50,0.5); }
+        }
+ 
+        /* ===== PAGE FLASH (fires when secret code is typed) ===== */
+        /* Removed - no longer flashing the whole page */
+        #pageGlitchOverlay {
+            display: none;
+            position: fixed; inset: 0; z-index: 9985;
+            pointer-events: none;
+        }
+        #pageGlitchOverlay.active {
+            display: none;
+        }
+ 
+        /* ===== HACKED EFFECT ANIMATIONS ===== */
+        @keyframes hackScanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100vh; }
+        }
+        @keyframes hackFlicker {
+            0%,100% { opacity: 1; }
+            92% { opacity: 1; } 93% { opacity: 0.7; } 94% { opacity: 1; } 97% { opacity: 0.85; } 98% { opacity: 1; }
+        }
+        @keyframes hackVignette {
+            0%,100% { box-shadow: inset 0 0 120px rgba(180,0,0,0.55); }
+            50% { box-shadow: inset 0 0 180px rgba(180,0,0,0.75); }
+        }
+        @keyframes hackVignetteBlue {
+            0%,100% { box-shadow: inset 0 0 120px rgba(0,150,255,0.45); }
+            50% { box-shadow: inset 0 0 180px rgba(0,200,255,0.65); }
+        }
+        @keyframes hackTextGlitch {
+            0%,100% { text-shadow: 0 0 8px currentColor; clip-path: none; }
+            15% { text-shadow: -3px 0 #ff0000, 3px 0 #ff0000, 0 0 20px #ff0000; }
+            16% { text-shadow: 0 0 8px currentColor; }
+            45% { text-shadow: 3px 0 #ff2222, -3px 0 #ff2222, 0 0 15px #ff3333; clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+            46% { clip-path: none; text-shadow: 0 0 8px currentColor; }
+            80% { text-shadow: -2px 0 #cc0000, 2px 0 #cc0000; }
+            81% { text-shadow: 0 0 8px currentColor; }
+        }
+        @keyframes hackTextGlitchBlue {
+            0%,100% { text-shadow: 0 0 8px currentColor; clip-path: none; }
+            15% { text-shadow: -3px 0 #0066ff, 3px 0 #00d4ff, 0 0 20px #00d4ff; }
+            16% { text-shadow: 0 0 8px currentColor; }
+            45% { text-shadow: 3px 0 #0088ff, -3px 0 #00ccff, 0 0 15px #00d4ff; clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+            46% { clip-path: none; text-shadow: 0 0 8px currentColor; }
+        }
+        @keyframes hackBorderPulse {
+            0%,100% { border-color: rgba(200,0,0,0.6); box-shadow: 0 0 15px rgba(200,0,0,0.3); }
+            50% { border-color: rgba(255,50,50,0.9); box-shadow: 0 0 30px rgba(255,0,0,0.5); }
+        }
+        @keyframes hackBorderPulseBlue {
+            0%,100% { border-color: rgba(0,150,255,0.6); box-shadow: 0 0 15px rgba(0,180,255,0.3); }
+            50% { border-color: rgba(0,212,255,0.9); box-shadow: 0 0 30px rgba(0,212,255,0.5); }
+        }
+        @keyframes corruptText {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.6; letter-spacing: 2px; }
+        }
+ 
+        /* RED PHASE */
+        #easterEgg.hacked-red { background: rgba(8,0,0,0.98); animation: hackFlicker 4s infinite, hackVignette 2s ease-in-out infinite; }
+        /* scanline z-index: 0 so game content (z-index:1) sits on top — scanlines visible in bg only */
+        #easterEgg.hacked-red::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,0,0,0.03) 3px, rgba(255,0,0,0.03) 4px); pointer-events: none; z-index: 0; animation: hackScanline 8s linear infinite; }
+        #easterEgg.hacked-red .game-header h2 { color: #ff3333; animation: hackTextGlitch 3s infinite; }
+        #easterEgg.hacked-red .game-hud { background: rgba(120,0,0,0.18); border-color: rgba(200,0,0,0.4); animation: hackBorderPulse 1.5s ease-in-out infinite; }
+        #easterEgg.hacked-red .hud-label { color: #883333; }
+        #easterEgg.hacked-red .hud-value { color: #ff4444; }
+        #easterEgg.hacked-red .email-card { background: #0d0505; border-color: rgba(200,0,0,0.35); animation: hackBorderPulse 2s ease-in-out infinite; }
+        #easterEgg.hacked-red .email-field { color: #883333; }
+        #easterEgg.hacked-red .email-subject { color: #ff5555; }
+        #easterEgg.hacked-red .email-body { color: #cc8888; }
+        #easterEgg.hacked-red .timer-ring-fill { stroke: #ff3333; }
+        #easterEgg.hacked-red #timerNum { color: #ff3333; }
+        #easterEgg.hacked-red .progress-bar-outer { background: rgba(100,0,0,0.2); }
+        #easterEgg.hacked-red .progress-bar-inner { background: linear-gradient(90deg, #880000, #ff3333); }
+        #easterEgg.hacked-red .btn-safe { background: linear-gradient(135deg, #550000, #882222); color: #ffaaaa; }
+        #easterEgg.hacked-red .btn-phish { background: linear-gradient(135deg, #cc0000, #ff4444); color: #fff; box-shadow: 0 0 20px rgba(255,0,0,0.4); }
+        #easterEgg.hacked-red .btn-continue { background: linear-gradient(135deg, #880000, #cc2222); color: #ffcccc; }
+        #easterEgg.hacked-red .feedback-bar.correct { border-color: #ff4444; background: rgba(100,0,0,0.15); color: #ff8888; }
+        #easterEgg.hacked-red .feedback-bar.wrong { border-color: #ff0000; background: rgba(150,0,0,0.2); color: #ff5555; }
+ 
+        /* BLUE PHASE */
+        #easterEgg.hacked-blue { background: rgba(0,5,15,0.98); animation: hackFlicker 5s infinite, hackVignetteBlue 2.5s ease-in-out infinite; transition: background 1.2s ease; }
+        #easterEgg.hacked-blue::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,180,255,0.03) 3px, rgba(0,180,255,0.03) 4px); pointer-events: none; z-index: 0; animation: hackScanline 6s linear infinite; }
+        #easterEgg.hacked-blue .game-header h2 { color: #00d4ff; animation: hackTextGlitchBlue 4s infinite; text-shadow: 0 0 20px rgba(0,212,255,0.6); }
+        #easterEgg.hacked-blue .game-hud { background: rgba(0,50,80,0.2); border-color: rgba(0,150,255,0.35); animation: hackBorderPulseBlue 2s ease-in-out infinite; }
+        #easterEgg.hacked-blue .hud-label { color: #006688; }
+        #easterEgg.hacked-blue .hud-value { color: #00d4ff; text-shadow: 0 0 10px rgba(0,212,255,0.5); }
+        #easterEgg.hacked-blue .email-card { background: #020d15; border-color: rgba(0,150,255,0.3); animation: hackBorderPulseBlue 2.5s ease-in-out infinite; }
+        #easterEgg.hacked-blue .email-field { color: #006688; }
+        #easterEgg.hacked-blue .email-subject { color: #00d4ff; text-shadow: 0 0 8px rgba(0,212,255,0.4); }
+        #easterEgg.hacked-blue .email-body { color: #88ccdd; }
+        #easterEgg.hacked-blue .timer-ring-fill { stroke: #00d4ff; }
+        #easterEgg.hacked-blue #timerNum { color: #00d4ff; }
+        #easterEgg.hacked-blue .progress-bar-inner { background: linear-gradient(90deg, #004466, #00d4ff); box-shadow: 0 0 10px rgba(0,212,255,0.4); }
+        #easterEgg.hacked-blue .btn-safe { background: linear-gradient(135deg, #003344, #006688); color: #88eeff; }
+        #easterEgg.hacked-blue .btn-phish { background: linear-gradient(135deg, #0044aa, #0088ff); color: #fff; box-shadow: 0 0 20px rgba(0,150,255,0.4); }
+        #easterEgg.hacked-blue .btn-continue { background: linear-gradient(135deg, #003366, #0066cc); color: #aaddff; }
+        #easterEgg.hacked-blue .feedback-bar.correct { border-color: #00d4ff; background: rgba(0,80,120,0.15); color: #66ddff; }
+        #easterEgg.hacked-blue .feedback-bar.wrong { border-color: #0088ff; background: rgba(0,50,100,0.2); color: #88ccff; }
+ 
+        /* ===== EASTER EGG GAME ===== */
+        #easterEgg {
+            display: none; position: fixed; inset: 0;
+            background: rgba(5,15,25,0.97); z-index: 9999;
+            font-family: 'Courier New', monospace; overflow-y: auto;
+        }
+        #easterEgg.show { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 2rem 1rem; }
+ 
+        /* Background letter rain canvas inside the game */
+        #gameRainCanvas {
+            position: fixed; inset: 0; pointer-events: none;
+            z-index: 0; opacity: 0 !important;
+            display: none;
+        }
+ 
+        /* All game content sits above the canvas */
+        #gameMain, #gameOver, .close-x { position: relative; z-index: 1; }
+ 
+        .game-header { text-align: center; margin-bottom: 1.5rem; }
+        .game-header h2 { font-size: 2rem; color: #00d4ff; text-shadow: 0 0 20px rgba(0,212,255,0.6); margin-bottom: .3rem; }
+        .game-header p { color: #e2e8f0; font-size: .95rem; }
+ 
+        .game-hud { display: flex; gap: 2rem; margin-bottom: 1.5rem; background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: .7rem 2rem; }
+        .hud-item { text-align: center; }
+        .hud-label { font-size: .7rem; color: #4a90a4; text-transform: uppercase; letter-spacing: 1px; }
+        .hud-value { font-size: 1.4rem; font-weight: bold; color: #00d4ff; }
+ 
+        .email-card { background: #0d1f2d; border: 1px solid rgba(0,212,255,0.15); border-radius: 14px; padding: 1.5rem; max-width: 620px; width: 100%; margin-bottom: 1.2rem; position: relative; overflow: hidden; }
+        .email-meta { margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: .8rem; }
+        .email-field { font-size: .82rem; color: #4a90a4; margin-bottom: .3rem; }
+        .email-field span { color: #e2e8f0; }
+        .email-subject { font-size: 1.05rem; font-weight: bold; color: #fff; margin-bottom: .8rem; }
+        .email-body { font-size: .9rem; color: #cbd5e1; line-height: 1.7; }
+        .email-link-fake { color: #00d4ff; text-decoration: underline; cursor: default; }
+ 
+        .game-btns { display: flex; gap: 1rem; max-width: 620px; width: 100%; margin-bottom: 1.5rem; }
+        .btn-safe { flex: 1; padding: .9rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; background: linear-gradient(135deg, #16a34a, #4ade80); color: #0a2a41; transition: all .2s; }
+        .btn-phish { flex: 1; padding: .9rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; background: linear-gradient(135deg, #dc2626, #ff6b6b); color: #fff; transition: all .2s; }
+        .btn-safe:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(74,222,128,0.3); }
+        .btn-phish:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,107,107,0.3); }
+        .btn-safe:disabled, .btn-phish:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+ 
+        .btn-continue { max-width: 620px; width: 100%; padding: .9rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; background: linear-gradient(135deg, #00d4ff, #00a8cc); color: #0a2a41; transition: all .2s; margin-bottom: 1.5rem; }
+        .btn-continue:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,212,255,0.3); }
+        .btn-continue:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+ 
+        .feedback-bar { max-width: 620px; width: 100%; min-height: 60px; border-radius: 10px; padding: .8rem 1.2rem; font-size: .9rem; line-height: 1.5; margin-bottom: 1rem; display: none; }
+        .feedback-bar.correct { display: block; background: rgba(74,222,128,0.12); border: 1px solid #4ade80; color: #4ade80; }
+        .feedback-bar.wrong { display: block; background: rgba(255,107,107,0.12); border: 1px solid #ff6b6b; color: #ff6b6b; }
+ 
+        .progress-bar-outer { max-width: 620px; width: 100%; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; margin-bottom: 1.5rem; overflow: hidden; }
+        .progress-bar-inner { height: 100%; background: linear-gradient(90deg, #00d4ff, #4ade80); border-radius: 3px; transition: width .4s ease; }
+ 
+        .game-over-screen { display: none; flex-direction: column; align-items: center; text-align: center; max-width: 500px; }
+        .game-over-screen.show { display: flex; }
+        .game-over-screen h2 { font-size: 2.2rem; color: #00d4ff; margin-bottom: .5rem; text-shadow: 0 0 20px rgba(0,212,255,0.5); }
+        .game-over-screen .final-score { font-size: 3.5rem; font-weight: bold; color: #4ade80; margin: 1rem 0; }
+        .game-over-screen p { color: #e2e8f0; margin-bottom: 1.5rem; line-height: 1.7; }
+        .game-over-screen .grade { font-size: 1.1rem; color: #00d4ff; margin-bottom: 1rem; }
+ 
+        .btn-restart { background: linear-gradient(135deg, #00d4ff, #00a8cc); color: #0a2a41; border: none; padding: .9rem 2.5rem; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; margin-right: .5rem; transition: all .2s; }
+        .btn-close-game { background: transparent; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.2); padding: .9rem 2.5rem; border-radius: 10px; font-size: 1rem; cursor: pointer; transition: all .2s; }
+        .btn-restart:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,212,255,0.3); }
+        .btn-close-game:hover { border-color: #00d4ff; color: #00d4ff; }
+ 
+        .timer-ring { position: absolute; top: 1rem; right: 1rem; width: 46px; height: 46px; }
+        .timer-ring svg { transform: rotate(-90deg); }
+        .timer-ring-bg { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 4; }
+        .timer-ring-fill { fill: none; stroke: #00d4ff; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 113; stroke-dashoffset: 0; transition: stroke-dashoffset .9s linear, stroke .3s; }
+        .timer-number { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: bold; color: #00d4ff; }
+ 
+        .close-x { position: fixed; top: 1rem; right: 1.5rem; font-size: 1.5rem; color: rgba(255,255,255,0.4); cursor: pointer; z-index: 10000; transition: color .2s; }
+        .close-x:hover { color: #ff6b6b; }
+ 
+        /* ===== IN-GAME FLOATING BUG CHARACTERS ===== */
+        .game-bug-char {
+            position: fixed;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 2;
+            white-space: nowrap;
+            animation: gameBugBurst var(--dur) ease-out forwards;
+        }
+        @keyframes gameBugBurst {
+            0%   { opacity: 0; transform: translate(0,0) scale(0) rotate(0deg); }
+            15%  { opacity: 1; transform: translate(calc(var(--tx)*0.2), calc(var(--ty)*0.2)) scale(1.3) rotate(calc(var(--rot)*0.2deg)); }
+            60%  { opacity: 0.9; }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.2) rotate(var(--rot)); }
         }
     </style>
 </head>
 <body>
-
+ 
     <header>
         <nav>
-            <div class="logo" onclick="showPage(1)" style="cursor: pointer;">
+            <div class="logo" onclick="showPage(1)" style="cursor:pointer;">
                 <div class="logo-icon">🛡️</div>CyberGuard
             </div>
             <div class="nav-links">
@@ -400,9 +508,8 @@
             </div>
         </nav>
     </header>
-
+ 
     <main>
-        
         <div class="page active" id="page1">
             <div class="hero">
                 <div class="hero-icon">🔐</div>
@@ -416,7 +523,7 @@
                 <div class="content-card" onclick="showPage(5)" style="cursor:pointer"><h3>✅ Find Solutions</h3><p>Discover simple and effective ways to protect yourself and stay safe online.</p></div>
             </div>
         </div>
-
+ 
         <div class="page" id="page2">
             <h2 class="section-title">The Reality of Modern Cyber Threats</h2>
             <div class="content-card"><p>Cyber safety means protecting your devices, information, and data from online attacks. Today, many people use the internet, and some of them try to harm others by stealing information or causing problems.</p></div>
@@ -428,7 +535,7 @@
             </div>
             <div class="content-card" style="margin-top:2rem"><h3>Why Cyber Safety Matters</h3><p>Because of these threats, it is important to always be careful when using the internet and to understand how these attacks work. Prevention and awareness are your best defenses against cyber threats.</p></div>
         </div>
-
+ 
         <div class="page" id="page3">
             <h2 class="section-title">Why Cyber Attacks Happen</h2>
             <p style="color:var(--m);margin-bottom:2rem">Cyber attacks often happen because of simple mistakes. Understanding these causes helps you stay protected.</p>
@@ -441,33 +548,39 @@
                 <div class="content-card"><h3>📢 Too Much Sharing</h3><p>Sharing too much personal information online, especially on social media, increases risk since details like location or phone numbers can be misused.</p></div>
             </div>
         </div>
-
+ 
         <div class="page" id="page4">
             <h2 class="section-title">How Cyber Attacks Affect Us</h2>
             <p style="color:var(--m);margin-bottom:2rem">Cyber attacks can cause serious problems in real life. Understanding the effects emphasizes the importance of cyber safety.</p>
             <div class="grid-2">
-                <div class="effect-card"><div class="effect-icon">💰</div><h3>Financial Loss</h3><p>Money is stolen from bank accounts or used without permission, sometimes taking long to fix.</p></div>
-                <div class="effect-card"><div class="effect-icon">😔</div><h3>Emotional Stress</h3><p>Victims may feel worried, unsafe, or lose confidence when using the internet, making them avoid online activities.</p></div>
-                <div class="effect-card"><div class="effect-icon">📖</div><h3>Reputation Damage</h3><p>Hackers may post false information or use accounts to spread harmful messages, affecting how others see a person.</p></div>
-                <div class="effect-card"><div class="effect-icon">🔒</div><h3>Privacy Risks</h3><p>Photos, messages, or files are stolen or shared without permission.</p></div>
-                <div class="effect-card"><div class="effect-icon">😠</div><h3>Cyberbullying</h3><p>Can happen, affecting mental health and social life.</p></div>
-                <div class="effect-card"><div class="effect-icon">💔</div><h3>Trust Issues</h3><p>Cyber attacks affect money, privacy, emotions, and trust, making cyber safety very important.</p></div>
+                <div class="effect-card"><h3>💰 Financial Loss</h3><p>Money is stolen from bank accounts or used without permission, sometimes taking long to fix.</p></div>
+                <div class="effect-card"><h3>😔 Emotional Stress</h3><p>Victims may feel worried, unsafe, or lose confidence when using the internet, making them avoid online activities.</p></div>
+                <div class="effect-card"><h3>📖 Reputation Damage</h3><p>Hackers may post false information or use accounts to spread harmful messages, affecting how others see a person.</p></div>
+                <div class="effect-card"><h3>🔒 Privacy Risks</h3><p>Photos, messages, or files are stolen or shared without permission.</p></div>
+                <div class="effect-card"><h3>😠 Cyberbullying</h3><p>Can happen, affecting mental health and social life.</p></div>
+                <div class="effect-card"><h3>💔 Trust Issues</h3><p>Cyber attacks affect money, privacy, emotions, and trust, making cyber safety very important.</p></div>
             </div>
         </div>
-
+ 
         <div class="page" id="page5">
             <h2 class="section-title">Simple Ways to Stay Safe</h2>
             <p style="color:var(--m);margin-bottom:2rem">There are simple ways to stay safe online. Follow these best practices to protect yourself.</p>
             <div class="grid-2">
-                <div class="solution-card"><div class="solution-icon">🔐</div><h3>Strong Passwords</h3><p>Use strong passwords that are different for each account and include letters, numbers, and symbols.</p></div>
-                <div class="solution-card"><div class="solution-icon">🔒</div><h3>Two-Factor Authentication</h3><p>Turn on two-factor authentication (2FA) adds extra protection to your accounts.</p></div>
-                <div class="solution-card"><div class="solution-icon">⚙️</div><h3>Privacy Settings</h3><p>Adjust privacy settings on social media so only trusted people can see your posts.</p></div>
-                <div class="solution-card"><div class="solution-icon">👁️</div><h3>Be Careful with Links</h3><p>Always be careful before clicking links or opening messages from unknown people.</p></div>
-                <div class="solution-card"><div class="solution-icon">🤖</div><h3>AI & Online Tools</h3><p>Be careful when sharing information with online tools or AI systems. Protecting personal data helps keep you safe online.</p></div>
-                <div class="solution-card"><div class="solution-icon">📱</div><h3>Device Security</h3><p>Keep your devices updated and use security software to protect against threats.</p></div>
+                <div class="solution-card"><h3>🔐 Strong Passwords</h3><p>Use strong passwords that are different for each account and include letters, numbers, and symbols.</p></div>
+                <div class="solution-card"><h3>🔒 Two-Factor Authentication</h3><p>Turn on two-factor authentication (2FA) adds extra protection to your accounts.</p></div>
+                <div class="solution-card"><h3>⚙️ Privacy Settings</h3><p>Adjust privacy settings on social media so only trusted people can see your posts.</p></div>
+                <div class="solution-card"><h3>👁️ Be Careful with Links</h3><p>Always be careful before clicking links or opening messages from unknown people.</p></div>
+                <div class="solution-card"><h3>🤖 AI & Online Tools</h3><p>Be careful when sharing information with online tools or AI systems. Protecting personal data helps keep you safe online.</p></div>
+                <div class="solution-card"><h3>📱 Device Security</h3><p>Keep your devices updated and use security software to protect against threats.</p></div>
+            </div>
+            <div class="video-wrapper">
+                <a href="https://youtu.be/aO858HyFbKI" target="_blank">
+                    <img src="https://img.youtube.com/vi/aO858HyFbKI/maxresdefault.jpg" alt="Watch on YouTube">
+                    <div class="play-btn">▶</div>
+                </a>
             </div>
         </div>
-
+ 
         <div class="page" id="page6">
             <h2 class="section-title">Get Involved with the Campaign</h2>
             <div class="content-card">
@@ -480,10 +593,9 @@
                     or you could use the form below. Your feedback helps improve awareness and keep the internet safer for everyone.
                 </p>
             </div>
-            
             <div class="contact-form">
                 <h3 class="form-title">Fill the form (optional)</h3>
-                <form action="https://formspree.io/f/maqvjyzk" method="POST">
+                <form action="https://formspree.io/f/maqvjyzk" method="POST" onsubmit="setTimeout(() => this.reset(), 100)">
                     <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your Name" required></div>
                     <div class="form-group"><label>Email Address</label><input type="email" name="_replyto" placeholder="Email Address" required></div>
                     <div class="form-group"><label>Your Message</label><textarea name="message" placeholder="Your Message..." required></textarea></div>
@@ -492,30 +604,747 @@
             </div>
         </div>
     </main>
-
+ 
     <footer>
-        <p>© GROUP1 project website IMAS G10AA</p>
+        <p>©️ GROUP1 project website IMAS G10AA</p>
     </footer>
-
+ 
+    <!-- PAGE GLITCH OVERLAY (red tint during secret code trigger) -->
+    <div id="pageGlitchOverlay"></div>
+ 
+    <!-- HACKER RAIN OVERLAY -->
+    <div id="hackerOverlay">
+        <canvas id="hackerCanvas"></canvas>
+        <img id="hackerImage" src="hacker.png" alt="">
+    </div>
+ 
     <script>
         function showPage(p) {
             document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
             document.getElementById('page' + p).classList.add('active');
-            
             document.querySelectorAll('.nav-btn').forEach((b, i) => {
-                b.classList.toggle('active', i + 1 === p)
+                b.classList.toggle('active', i + 1 === p);
             });
-            
             window.scrollTo(0, 0);
         }
-
-        // Form submission logic remains connected to Formspree
-        function submitForm(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            e.target.reset();
+ 
+        // ===== UPGRADED SECRET CODE INPUT WITH GLITCH + BUG BURST =====
+        const secretCode = '300ms';
+        const nameInput = document.querySelector('input[name="name"]');
+        const bugChars = '01HACKBREACHXFIREDENYROOT!@#$%^&*<>{}[]|;:';
+ 
+        function spawnBugChar(x, y, colorRed) {
+            const el = document.createElement('span');
+            el.classList.add('bug-char');
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 60 + Math.random() * 140;
+            const tx = Math.cos(angle) * dist;
+            const ty = Math.sin(angle) * dist;
+            const dur = 0.4 + Math.random() * 0.5;
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            el.style.setProperty('--tx', tx + 'px');
+            el.style.setProperty('--ty', ty + 'px');
+            el.style.fontSize = (10 + Math.random() * 14) + 'px';
+            el.style.animationDuration = dur + 's';
+ 
+            // Alternate red and white for the glitch bug feel
+            const r = Math.random();
+            if (r > 0.6) el.style.color = '#ff0000';
+            else if (r > 0.3) el.style.color = '#ffffff';
+            else el.style.color = '#ff6666';
+            el.style.textShadow = '0 0 8px currentColor';
+ 
+            el.textContent = bugChars[Math.floor(Math.random() * bugChars.length)];
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), dur * 1000 + 100);
         }
-    </script>
+ 
+        function triggerInputBugBurst() {
+            const rect = nameInput.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+ 
+            // Burst 1: immediate small burst
+            for (let i = 0; i < 12; i++) {
+                setTimeout(() => {
+                    const x = rect.left + Math.random() * rect.width;
+                    const y = rect.top + Math.random() * rect.height;
+                    spawnBugChar(x, y, true);
+                }, i * 30);
+            }
+ 
+            // Burst 2: mid-animation bigger explosion
+            setTimeout(() => {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const x = rect.left + Math.random() * rect.width;
+                        const y = rect.top + Math.random() * rect.height;
+                        spawnBugChar(x, y, true);
+                    }, i * 20);
+                }
+            }, 350);
+ 
+            // Burst 3: final explosion before screen transition
+            setTimeout(() => {
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const x = cx + (Math.random() - 0.5) * 300;
+                        const y = cy + (Math.random() - 0.5) * 200;
+                        spawnBugChar(x, y, true);
+                    }, i * 15);
+                }
+            }, 700);
+        }
+ 
+        nameInput.addEventListener('input', function() {
+            if (this.value.toLowerCase().trim() === secretCode) {
+                this.readOnly = true;
 
+                // 1. No full-page flash - focus on letter effects instead
+
+                // 2. Animate the input: wrap each character in a span then remove them one by one
+                const originalValue = this.value;
+                const input = this;
+
+                // Build an overlay positioned exactly over the input to show the animated chars
+                const rect = input.getBoundingClientRect();
+                const charOverlay = document.createElement('div');
+                charOverlay.style.cssText = `
+                    position: fixed;
+                    left: ${rect.left + 16}px;
+                    top: ${rect.top + 50}%;
+                    transform: translateY(-50%);
+                    font-family: 'Segoe UI', sans-serif;
+                    font-size: 1rem;
+                    letter-spacing: normal;
+                    pointer-events: none;
+                    z-index: 9990;
+                    display: flex;
+                    gap: 0px;
+                    align-items: center;
+                `;
+ 
+                // Hide actual input text while we animate
+                input.style.color = 'transparent';
+                input.classList.add('hacking');
+ 
+                // Create a span per character
+                const chars = originalValue.split('');
+                const spans = chars.map(ch => {
+                    const s = document.createElement('span');
+                    s.textContent = ch;
+                    s.style.cssText = 'transition: opacity 0.35s ease, transform 0.35s ease, color 0.2s ease; opacity: 1; color: #ffffff; display: inline-block;';
+                    charOverlay.appendChild(s);
+                    return s;
+                });
+                document.body.appendChild(charOverlay);
+
+                // Flash some letters red (not all, and not white)
+                let flashCount = 0;
+                const flashInterval = setInterval(() => {
+                    spans.forEach((s, idx) => {
+                        // Only turn some letters red randomly
+                        if (Math.random() > 0.5) {
+                            s.style.color = flashCount % 2 === 0 ? '#ff0000' : '#ffffff';
+                            s.style.textShadow = flashCount % 2 === 0 ? '0 0 10px #ff0000' : 'none';
+                        }
+                    });
+                    flashCount++;
+                }, 100);
+                setTimeout(() => {
+                    clearInterval(flashInterval);
+                    // Reset to white
+                    spans.forEach(s => {
+                        s.style.color = '#ffffff';
+                        s.style.textShadow = 'none';
+                    });
+                }, 500);
+
+                // Then remove chars one by one from random positions with smooth fade
+                setTimeout(() => {
+                    const indices = chars.map((_, i) => i);
+                    // Shuffle removal order for a glitchy feel
+                    for (let i = indices.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [indices[i], indices[j]] = [indices[j], indices[i]];
+                    }
+                    indices.forEach((idx, order) => {
+                        setTimeout(() => {
+                            spans[idx].style.opacity = '0';
+                            spans[idx].style.transform = 'scale(0.7) translateY(-8px)';
+                            // Make some letters red and flashing
+                            if (Math.random() > 0.4) {
+                                spans[idx].style.color = '#ff0000';
+                                spans[idx].style.textShadow = '0 0 8px #ff0000';
+                            }
+                        }, order * 70);
+                    });
+                }, 420);
+ 
+                // Clean up and proceed
+                const totalDuration = 420 + chars.length * 70 + 200;
+                setTimeout(() => {
+                    document.body.removeChild(charOverlay);
+                    input.style.color = '';
+                    input.classList.remove('hacking');
+                    input.value = '';
+                    input.readOnly = false;
+ 
+                    const toast = document.getElementById('eggToast');
+                    toast.classList.add('show');
+                    setTimeout(() => showHackerRain(toast), 900);
+                }, totalDuration);
+            }
+        });
+ 
+        // ===== HACKER RAIN =====
+        function showHackerRain(toast) {
+            const overlay = document.getElementById('hackerOverlay');
+            const canvas = document.getElementById('hackerCanvas');
+            overlay.classList.add('show');
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    overlay.classList.add('visible');
+                    setTimeout(() => {
+                        canvas.classList.add('visible');
+                        startRainAnimation(canvas, overlay, toast);
+                    }, 600);
+                });
+            });
+        }
+ 
+        function startRainAnimation(canvas, overlay, toast) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const cols = Math.floor(canvas.width / 20);
+            const drops = Array(cols).fill(1);
+            // More chaotic character set with visual bugs
+            const chars = '01HACKBREACHACCESSDENIEDFIREWALLROOTEXPLOITINJECTSUDO!@#$%^&*<>{}[]|;:▓▒░█▄▀';
+            let frameCount = 0;
+            let animId;
+            const imgEl = document.getElementById('hackerImage');
+ 
+            // Track "burst zones" — sudden bright clusters that appear then fade
+            let burstZones = [];
+ 
+            function addBurstZone() {
+                burstZones.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: 30 + Math.random() * 80,
+                    alpha: 0.5 + Math.random() * 0.5,
+                    life: 1.0
+                });
+            }
+ 
+            function drawRain() {
+                ctx.fillStyle = 'rgba(0,0,0,0.13)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+                // Red tint builds up over time
+                const redAlpha = Math.min(frameCount / 160, 1) * 0.30;
+                ctx.fillStyle = 'rgba(120,0,0,' + redAlpha + ')';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+ 
+                // Occasionally add a chaotic bright flash across a strip
+                if (Math.random() > 0.985) {
+                    const sy = Math.random() * canvas.height;
+                    ctx.fillStyle = 'rgba(255,0,0,0.07)';
+                    ctx.fillRect(0, sy, canvas.width, 2 + Math.random() * 4);
+                }
+ 
+                // Spawn random burst zone occasionally
+                if (Math.random() > 0.96) addBurstZone();
+ 
+                // Draw and decay burst zones
+                burstZones = burstZones.filter(b => b.life > 0.01);
+                for (const b of burstZones) {
+                    const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+                    g.addColorStop(0, 'rgba(255,30,30,' + (b.alpha * b.life * 0.3) + ')');
+                    g.addColorStop(1, 'rgba(0,0,0,0)');
+                    ctx.fillStyle = g;
+                    ctx.fillRect(b.x - b.r, b.y - b.r, b.r * 2, b.r * 2);
+                    b.life -= 0.06;
+                }
+ 
+                ctx.font = 'bold 18px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    const r = Math.random();
+                    // White bright leaders, then red, then dark red
+                    if (r > 0.96) { ctx.fillStyle = '#ffffff'; }
+                    else if (r > 0.90) { ctx.fillStyle = '#ff9999'; }
+                    else if (r > 0.75) { ctx.fillStyle = '#ff4444'; }
+                    else if (r > 0.55) { ctx.fillStyle = '#cc0000'; }
+                    else { ctx.fillStyle = '#880000'; }
+ 
+                    ctx.fillText(char, i * 20, drops[i] * 20);
+ 
+                    // Occasional double/triple character for glitch effect
+                    if (Math.random() > 0.97) {
+                        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                        ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 20 + 2, drops[i] * 20 - 2);
+                    }
+ 
+                    if (drops[i] * 20 > canvas.height && Math.random() > 0.97) drops[i] = 0;
+                    drops[i]++;
+                }
+ 
+                // Occasional horizontal glitch bar
+                if (Math.random() > 0.97) {
+                    const gy = Math.floor(Math.random() * canvas.height);
+                    const gh = 1 + Math.floor(Math.random() * 3);
+                    const imageData = ctx.getImageData(0, gy, canvas.width, gh);
+                    const shift = Math.floor((Math.random() - 0.5) * 30);
+                    ctx.putImageData(imageData, shift, gy);
+                }
+            }
+ 
+            function animate() { frameCount++; drawRain(); animId = requestAnimationFrame(animate); }
+            animId = requestAnimationFrame(animate);
+ 
+            const imageDelay = setTimeout(() => {
+                imgEl.src = 'hacker.png';
+                imgEl.classList.add('spawn');
+            }, 1200);
+ 
+            setTimeout(() => {
+                imgEl.classList.remove('spawn');
+                imgEl.classList.add('fadeout');
+                let flashCount = 0;
+                const redFlash = setInterval(() => {
+                    flashCount++;
+                    ctx.fillStyle = 'rgba(150,0,0,0.12)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    if (flashCount >= 12) {
+                        clearInterval(redFlash);
+                        ctx.fillStyle = '#000000';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        setTimeout(() => {
+                            cancelAnimationFrame(animId);
+                            overlay.classList.remove('visible');
+                            canvas.classList.remove('visible');
+                            setTimeout(() => { overlay.classList.remove('show'); }, 600);
+                            toast.classList.remove('show');
+                            imgEl.classList.remove('fadeout');
+                            imgEl.src = '';
+                            clearTimeout(imageDelay);
+                            openGame();
+                        }, 400);
+                    }
+                }, 45);
+            }, 6200);
+        }
+ 
+        // ===== BACKGROUND LETTER RAIN IN GAME =====
+        let gameRainAnimId = null;
+        let gameBugInterval = null;
+ 
+        function startGameRain() {
+            const canvas = document.getElementById('gameRainCanvas');
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+            const cols = Math.floor(canvas.width / 22);
+            const drops = Array.from({length: cols}, () => Math.random() * -50);
+            const chars = '01HACKBREACHFIREWALLROOTACCESSEXPLOITINJECTSUDODENIED';
+ 
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = '13px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    const alpha = 0.08 + Math.random() * 0.12;
+                    ctx.fillStyle = 'rgba(0,212,255,' + alpha + ')';
+                    ctx.fillText(char, i * 22, drops[i] * 22);
+                    if (drops[i] * 22 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i] += 0.4;
+                }
+                gameRainAnimId = requestAnimationFrame(draw);
+            }
+            draw();
+        }
+ 
+        function stopGameRain() {
+            if (gameRainAnimId) { cancelAnimationFrame(gameRainAnimId); gameRainAnimId = null; }
+            if (gameBugInterval) { clearInterval(gameBugInterval); gameBugInterval = null; }
+            const canvas = document.getElementById('gameRainCanvas');
+            if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+            // Remove any leftover game bug chars
+            document.querySelectorAll('.game-bug-char').forEach(el => el.remove());
+        }
+ 
+        // ===== IN-GAME BUG CHARACTER SPAWNER =====
+        // Spawns glitchy letters that fly in from screen edges and corners into view
+        const gameBugSet = '01HACKBREACHXROOT!#$%^&|<>{}[]DENIED';
+ 
+        function spawnGameBug(phase) {
+            const el = document.createElement('span');
+            el.classList.add('game-bug-char');
+ 
+            const W = window.innerWidth;
+            const H = window.innerHeight;
+ 
+            // Pick a spawn point from edges / corners
+            const edge = Math.floor(Math.random() * 4);
+            let sx, sy;
+            switch(edge) {
+                case 0: sx = Math.random() * W; sy = -20; break;           // top
+                case 1: sx = Math.random() * W; sy = H + 20; break;        // bottom
+                case 2: sx = -20; sy = Math.random() * H; break;           // left
+                case 3: sx = W + 20; sy = Math.random() * H; break;        // right
+            }
+ 
+            // Travel inward toward a random central zone
+            const targetX = W * 0.2 + Math.random() * W * 0.6;
+            const targetY = H * 0.2 + Math.random() * H * 0.6;
+            const tx = targetX - sx;
+            const ty = targetY - sy;
+            const rot = (Math.random() - 0.5) * 720;
+            const dur = 0.5 + Math.random() * 0.7;
+            const size = 10 + Math.random() * 18;
+ 
+            el.style.left = sx + 'px';
+            el.style.top = sy + 'px';
+            el.style.fontSize = size + 'px';
+            el.style.setProperty('--tx', tx + 'px');
+            el.style.setProperty('--ty', ty + 'px');
+            el.style.setProperty('--rot', rot + 'deg');
+            el.style.setProperty('--dur', dur + 's');
+            el.style.animationDuration = dur + 's';
+ 
+            // Color based on current phase
+            const r = Math.random();
+            if (phase === 'red') {
+                if (r > 0.7) el.style.color = '#ffffff';
+                else if (r > 0.4) el.style.color = '#ff4444';
+                else el.style.color = '#cc0000';
+                el.style.textShadow = '0 0 6px #ff0000';
+            } else {
+                if (r > 0.7) el.style.color = '#ffffff';
+                else if (r > 0.35) el.style.color = '#00d4ff';
+                else el.style.color = '#0088cc';
+                el.style.textShadow = '0 0 6px #00d4ff';
+            }
+ 
+            el.textContent = gameBugSet[Math.floor(Math.random() * gameBugSet.length)];
+            document.getElementById('easterEgg').appendChild(el);
+            setTimeout(() => el.remove(), dur * 1000 + 100);
+        }
+ 
+        function startGameBugs(phase) {
+            if (gameBugInterval) clearInterval(gameBugInterval);
+            // Spawn bugs disabled - stop flying effects
+            // gameBugInterval = setInterval(() => {
+            //     const count = 1 + Math.floor(Math.random() * 3);
+            //     for (let i = 0; i < count; i++) {
+            //         setTimeout(() => spawnGameBug(phase), i * 80);
+            //     }
+            // }, 350);
+        }
+ 
+        function updateGameRainColor(phase) {
+            stopGameRain();
+            startGameBugs(phase);
+ 
+            const canvas = document.getElementById('gameRainCanvas');
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+            const cols = Math.floor(canvas.width / 22);
+            const drops = Array.from({length: cols}, () => Math.random() * -50);
+            const chars = '01HACKBREACHFIREWALLROOTACCESSEXPLOITINJECTSUDODENIED';
+ 
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = '13px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    const alpha = 0.07 + Math.random() * 0.13;
+                    if (phase === 'red') ctx.fillStyle = 'rgba(220,0,0,' + alpha + ')';
+                    else ctx.fillStyle = 'rgba(0,212,255,' + alpha + ')';
+                    ctx.fillText(char, i * 22, drops[i] * 22);
+                    if (drops[i] * 22 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i] += 0.4;
+                }
+                gameRainAnimId = requestAnimationFrame(draw);
+            }
+            draw();
+        }
+ 
+        function openGame() {
+            const egg = document.getElementById('easterEgg');
+            egg.classList.add('show');
+            document.getElementById('gameOver').classList.remove('show');
+            const gm = document.getElementById('gameMain');
+            gm.style.display = 'flex';
+            gm.style.flexDirection = 'column';
+            gm.style.alignItems = 'center';
+            gm.style.width = '100%';
+ 
+            // Phase 1: RED
+            egg.classList.remove('hacked-blue');
+            egg.classList.add('hacked-red');
+            updateGameRainColor('red');
+ 
+            // Breach banner
+            let banner = document.getElementById('hackBanner');
+            if (!banner) {
+                banner = document.createElement('div');
+                banner.id = 'hackBanner';
+                banner.style.cssText = 'position:fixed;top:0;left:0;width:100%;z-index:10001;color:#fff;text-align:center;font-family:Courier New,monospace;font-size:0.85rem;font-weight:bold;letter-spacing:3px;padding:6px 0;text-transform:uppercase;pointer-events:none;animation:corruptText 0.8s infinite;';
+                egg.appendChild(banner);
+            }
+            banner.style.background = '#cc0000';
+            banner.style.opacity = '1';
+            banner.style.display = 'block';
+            banner.style.transition = '';
+            banner.textContent = '⚠ SYSTEM BREACH DETECTED — INITIATING COUNTERMEASURES ⚠';
+ 
+            // Phase 2: BLUE — extended, with a glitchy "fighting" middle phase
+            // At 6s: start flickering between red and blue (system fighting itself)
+            setTimeout(() => {
+                let flicks = 0;
+                const fightInterval = setInterval(() => {
+                    flicks++;
+                    egg.classList.toggle('hacked-red');
+                    egg.classList.toggle('hacked-blue');
+                    // Update rain color to match
+                    const isRed = egg.classList.contains('hacked-red');
+                    // Lightweight color update — don't restart full rain, just update gameBugSet color
+                    if (gameBugInterval) clearInterval(gameBugInterval);
+                    startGameBugs(isRed ? 'red' : 'blue');
+                    if (flicks >= 10) {
+                        clearInterval(fightInterval);
+                        // Settle into blue
+                        egg.classList.remove('hacked-red');
+                        egg.classList.add('hacked-blue');
+                        updateGameRainColor('blue');
+                        banner.style.background = '#003366';
+                        banner.textContent = '✦ COUNTERMEASURES ACTIVE — FIREWALL ENGAGED ✦';
+                    }
+                }, 280);
+            }, 6000);
+ 
+            // Banner fades at 14s (after full fight sequence settles)
+            setTimeout(() => {
+                banner.style.transition = 'opacity 1s ease';
+                banner.style.opacity = '0';
+                setTimeout(() => { banner.style.display = 'none'; banner.style.opacity = '1'; banner.style.transition = ''; }, 1000);
+            }, 14000);
+ 
+            startGame();
+        }
+ 
+        function closeGame() {
+            const egg = document.getElementById('easterEgg');
+            egg.classList.remove('show', 'hacked-red', 'hacked-blue');
+            const banner = document.getElementById('hackBanner');
+            if (banner) { banner.style.display = 'none'; banner.style.opacity = '1'; banner.style.transition = ''; }
+            stopGameRain();
+            clearInterval(timerInterval);
+        }
+ 
+        // ===== GAME DATA =====
+        const emails = [
+            { from: 'security@paypa1.com', subject: 'Urgent: Your account has been limited!', body: 'Dear Customer,\n\nWe have detected unusual activity on your PayPal account. Your account has been temporarily limited.\n\nPlease verify your identity immediately by clicking the link below:\n\n<span class="email-link-fake">http://paypa1-secure-verify.tk/login</span>\n\nFailure to verify within 24 hours will result in permanent suspension.', isPhishing: true, clue: '⚠️ The sender is "paypa1.com" (number 1 instead of letter L). The link also goes to a suspicious .tk domain — classic phishing tricks!' },
+            { from: 'no-reply@github.com', subject: 'Your pull request was merged', body: 'Hi there,\n\nYour pull request #847 "Fix navigation bug" was successfully merged into the main branch by a collaborator.\n\nView the changes on GitHub:\n<span class="email-link-fake">https://github.com/project/pull/847</span>\n\nThanks for contributing!\n— The GitHub Team', isPhishing: false, clue: '✅ Legitimate email! Real sender domain (github.com), no urgency pressure, no request for personal info, link goes to the real GitHub site.' },
+            { from: 'winner@lottery-international-prize.com', subject: '🎉 YOU HAVE WON $1,500,000!', body: 'CONGRATULATIONS!!!\n\nYou have been selected as the WINNER of our international lottery draw!\n\nTo claim your $1,500,000 prize, please reply with:\n- Full Name\n- Home Address\n- Bank Account Number\n- Copy of ID\n\nAct NOW — offer expires in 48 hours!', isPhishing: true, clue: '⚠️ A classic scam! You never entered any lottery. They want your bank details and ID. The domain is fake and the extreme urgency is a major red flag.' },
+            { from: 'noreply@netflix.com', subject: 'Your Netflix invoice for this month', body: 'Hi,\n\nYour monthly subscription of $15.49 has been successfully charged to your card ending in 4242.\n\nNext billing date: June 13, 2026\n\nIf you have questions about your bill, visit our Help Center at:\n<span class="email-link-fake">https://help.netflix.com/billing</span>\n\n— Netflix', isPhishing: false, clue: '✅ Legitimate! Real Netflix domain, no links asking for passwords, no urgency, just a standard billing confirmation with a help center link.' },
+            { from: 'it-support@your-company-helpdesk.net', subject: 'ACTION REQUIRED: Reset your password now', body: 'Dear Employee,\n\nOur IT system has detected that your password will expire in 1 hour.\n\nTo avoid losing access to your account, click here immediately:\n<span class="email-link-fake">http://company-portal-reset.net/reset?user=you</span>\n\nDo NOT share this link with anyone.\n\n— IT Support Team', isPhishing: true, clue: '⚠️ Phishing! Your real company IT would never use "your-company-helpdesk.net". The extreme 1-hour urgency and suspicious external link are clear warning signs.' },
+            { from: 'receipts@amazon.com', subject: 'Your order has shipped! Tracking #294-8821', body: 'Hello,\n\nGood news — your order has shipped!\n\nOrder: USB-C Hub (x1)\nEstimated delivery: 2-4 business days\nTracking number: 1Z294882101234567\n\nTrack your package:\n<span class="email-link-fake">https://www.amazon.com/orders/track?id=29488210</span>\n\nThank you for shopping with Amazon.', isPhishing: false, clue: '✅ Legitimate! Sender is receipts@amazon.com, no personal info requested, link goes directly to amazon.com, and the tone is calm with no urgency.' },
+            { from: 'verify@app1e-id-support.com', subject: 'Your Apple ID was used to sign in from Russia', body: 'Apple ID Alert\n\nYour Apple ID was used to sign in to iCloud on a Windows PC in Moscow, Russia.\n\nIf this was not you, your account may be compromised. Verify your identity immediately:\n<span class="email-link-fake">http://app1e-id-support.com/verify</span>\n\nIf you do not verify within 12 hours, your Apple ID will be permanently disabled.', isPhishing: true, clue: '⚠️ Phishing! The domain is "app1e" (number 1 instead of L). Real Apple alerts come from apple.com. The threat of "permanent disable" is designed to panic you.' },
+            { from: 'support@spotify.com', subject: 'Password changed successfully', body: 'Hi,\n\nThis is a confirmation that your Spotify account password was recently changed.\n\nIf you made this change, no action is needed.\n\nIf you did NOT make this change, please secure your account immediately at:\n<span class="email-link-fake">https://www.spotify.com/account/overview</span>\n\n— Spotify Security Team', isPhishing: false, clue: '✅ Legitimate! Real spotify.com sender, balanced tone (not just panic), link goes to official spotify.com, and it gives you a clear action only if needed.' }
+        ];
+ 
+        let currentIndex = 0, score = 0, streak = 0;
+        let timerInterval = null, timeLeft = 30, answered = false, shuffled = [];
+ 
+        function shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+ 
+        function startGame() {
+            shuffled = shuffle(emails);
+            currentIndex = 0; score = 0; streak = 0;
+            document.getElementById('gameOver').classList.remove('show');
+            document.getElementById('gameMain').style.display = 'flex';
+            updateHUD();
+            loadEmail();
+        }
+ 
+        function loadEmail() {
+            if (currentIndex >= shuffled.length) { endGame(); return; }
+            answered = false;
+            document.getElementById('btnSafe').disabled = false;
+            document.getElementById('btnPhish').disabled = false;
+            document.getElementById('feedbackBar').className = 'feedback-bar';
+            const e = shuffled[currentIndex];
+            document.getElementById('eFrom').textContent = e.from;
+            document.getElementById('eSubject').textContent = e.subject;
+            document.getElementById('eBody').innerHTML = e.body.replace(/\n/g, '<br>');
+            document.getElementById('emailNum').textContent = (currentIndex + 1) + ' / ' + shuffled.length;
+            document.getElementById('progressBar').style.width = (currentIndex / shuffled.length * 100) + '%';
+            clearInterval(timerInterval);
+            timeLeft = 45;
+            document.getElementById('btnContinue').style.display = 'none';
+            updateTimer();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+                if (timeLeft <= 0) { clearInterval(timerInterval); if (!answered) timeUp(); }
+            }, 1000);
+        }
+ 
+        function updateTimer() {
+            document.getElementById('timerNum').textContent = timeLeft;
+            const ring = document.getElementById('timerRing');
+            const pct = timeLeft / 45;
+            ring.style.strokeDashoffset = 113 * (1 - pct);
+            ring.style.stroke = timeLeft > 24 ? '#00d4ff' : timeLeft > 12 ? '#ffcc00' : '#ff6b6b';
+            document.getElementById('timerNum').style.color = ring.style.stroke;
+        }
+ 
+        function timeUp() {
+            answered = true; streak = 0;
+            clearInterval(timerInterval);
+            document.getElementById('btnSafe').disabled = true;
+            document.getElementById('btnPhish').disabled = true;
+            const fb = document.getElementById('feedbackBar');
+            fb.className = 'feedback-bar wrong';
+            fb.innerHTML = '⏰ Time\'s up! ' + shuffled[currentIndex].clue;
+            updateHUD();
+            document.getElementById('btnContinue').style.display = 'block';
+        }
+ 
+        function answer(guessPhishing) {
+            if (answered) return;
+            answered = true;
+            clearInterval(timerInterval);
+            document.getElementById('btnSafe').disabled = true;
+            document.getElementById('btnPhish').disabled = true;
+            const e = shuffled[currentIndex];
+            const correct = guessPhishing === e.isPhishing;
+            const fb = document.getElementById('feedbackBar');
+            if (correct) {
+                streak++;
+                const bonus = streak >= 3 ? 20 : 10;
+                score += bonus;
+                fb.className = 'feedback-bar correct';
+                fb.innerHTML = (streak >= 3 ? '🔥 ' + streak + 'x Streak! — ' : '✅ Correct! — ') + e.clue;
+            } else {
+                streak = 0;
+                fb.className = 'feedback-bar wrong';
+                fb.innerHTML = '❌ Wrong! — ' + e.clue;
+            }
+            updateHUD();
+            document.getElementById('btnContinue').style.display = 'block';
+        }
+ 
+        function continueToNext() { currentIndex++; loadEmail(); }
+ 
+        function updateHUD() {
+            document.getElementById('scoreDisplay').textContent = score;
+            document.getElementById('streakDisplay').textContent = '🔥' + streak;
+        }
+ 
+        function endGame() {
+            clearInterval(timerInterval);
+            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('gameMain').style.display = 'none';
+            const go = document.getElementById('gameOver');
+            go.classList.add('show');
+            document.getElementById('finalScore').textContent = score + ' pts';
+            const pct = score / (emails.length * 20);
+            let grade, msg;
+            if (pct >= 0.9) { grade = '🏆 Cyber Expert'; msg = 'Outstanding! You can spot phishing attempts like a pro. Your digital safety skills are elite.'; }
+            else if (pct >= 0.7) { grade = '🛡️ Security Aware'; msg = 'Great job! You have solid instincts for spotting suspicious emails. Keep practising to reach expert level.'; }
+            else if (pct >= 0.5) { grade = '⚠️ Needs Practice'; msg = 'Not bad, but there\'s room to improve. Pay attention to sender domains and suspicious links.'; }
+            else { grade = '🚨 High Risk'; msg = 'Hackers would love you! Study the clues carefully — always check the sender domain and never click suspicious links.'; }
+            document.getElementById('gradeText').textContent = grade;
+            document.getElementById('gameOverMsg').textContent = msg;
+        }
+ 
+        const vw = document.querySelector('.video-wrapper');
+        let vBounds = null;
+        vw.addEventListener('mouseenter', () => { vBounds = vw.getBoundingClientRect(); });
+        vw.addEventListener('mousemove', (e) => {
+            if (!vBounds) vBounds = vw.getBoundingClientRect();
+            const cx = e.clientX - vBounds.left - vBounds.width / 2;
+            const cy = e.clientY - vBounds.top - vBounds.height / 2;
+            vw.style.transform = "perspective(800px) rotateX(" + (cy/-12) + "deg) rotateY(" + (cx/12) + "deg) scale(1.03)";
+            vw.style.boxShadow = (-cx/8) + "px " + (-cy/8+20) + "px 50px rgba(0,212,255,0.35)";
+        });
+        vw.addEventListener('mouseleave', () => {
+            vBounds = null;
+            vw.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+            vw.style.boxShadow = "0 0 40px rgba(0,212,255,0.2)";
+        });
+        window.addEventListener('resize', () => { vBounds = null; });
+    </script>
+ 
+    <!-- EASTER EGG UNLOCK TOAST -->
+    <div class="egg-unlock" id="eggToast">💀 BREACH DETECTED 🔴 | Initiating Hacker Challenge...</div>
+ 
+    <!-- EASTER EGG GAME -->
+    <div id="easterEgg">
+        <canvas id="gameRainCanvas"></canvas>
+        <span class="close-x" onclick="closeGame()">✕</span>
+ 
+        <div id="gameMain">
+            <div class="game-header">
+                <h2>🎣 Spot the Phishing</h2>
+                <p>Is this email <strong>safe</strong> or a <strong>phishing</strong> attempt? You have 45 seconds per email.</p>
+            </div>
+            <div class="game-hud">
+                <div class="hud-item"><div class="hud-label">Score</div><div class="hud-value" id="scoreDisplay">0</div></div>
+                <div class="hud-item"><div class="hud-label">Email</div><div class="hud-value" id="emailNum">1 / 8</div></div>
+                <div class="hud-item"><div class="hud-label">Streak</div><div class="hud-value" id="streakDisplay">🔥0</div></div>
+            </div>
+            <div class="progress-bar-outer"><div class="progress-bar-inner" id="progressBar" style="width:0%"></div></div>
+            <div class="email-card" id="emailCard">
+                <div class="timer-ring">
+                    <svg viewBox="0 0 40 40" width="46" height="46">
+                        <circle class="timer-ring-bg" cx="20" cy="20" r="18"/>
+                        <circle class="timer-ring-fill" id="timerRing" cx="20" cy="20" r="18"/>
+                    </svg>
+                    <div class="timer-number" id="timerNum">45</div>
+                </div>
+                <div class="email-meta">
+                    <div class="email-field">From: <span id="eFrom"></span></div>
+                    <div class="email-field">To: <span>you@email.com</span></div>
+                </div>
+                <div class="email-subject" id="eSubject"></div>
+                <div class="email-body" id="eBody"></div>
+            </div>
+            <div class="feedback-bar" id="feedbackBar"></div>
+            <div class="game-btns">
+                <button class="btn-safe" id="btnSafe" onclick="answer(false)">✅ Safe Email</button>
+                <button class="btn-phish" id="btnPhish" onclick="answer(true)">🎣 Phishing!</button>
+            </div>
+            <button class="btn-continue" id="btnContinue" onclick="continueToNext()" style="display:none;">→ Next Email</button>
+        </div>
+ 
+        <div class="game-over-screen" id="gameOver">
+            <h2>Mission Complete</h2>
+            <div class="final-score" id="finalScore">0</div>
+            <div class="grade" id="gradeText"></div>
+            <p id="gameOverMsg"></p>
+            <div>
+                <button class="btn-restart" onclick="startGame()">🔄 Play Again</button>
+                <button class="btn-close-game" onclick="closeGame()">← Back to Site</button>
+            </div>
+        </div>
+    </div>
+ 
 </body>
 </html>
